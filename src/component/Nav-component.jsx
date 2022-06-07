@@ -1,6 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
-const NavComponent = () => {
+const NavComponent = (props) => {
+  let { currentUser, setCurrentUser } = props;
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    AuthService.logout();
+    window.alert("Logout successfully.");
+    setCurrentUser(null);
+    navigate("/");
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -26,21 +36,35 @@ const NavComponent = () => {
                   Home
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/api/user/register">
-                  Register
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/api/user/login">
-                  Login
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/#">
-                  Logout
-                </a>
-              </li>
+              {!currentUser && (
+                <div className="d-flex flex-row">
+                  <li className="nav-item">
+                    <a className="nav-link" href="/api/user/register">
+                      Register
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/api/user/login">
+                      Login
+                    </a>
+                  </li>
+                </div>
+              )}
+
+              {currentUser && (
+                <div className="d-flex flex-row">
+                  <li className="nav-item">
+                    <a onClick={handleLogout} className="nav-link" href="/#">
+                      Logout
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/api/user/profile">
+                      Profile
+                    </a>
+                  </li>
+                </div>
+              )}
             </ul>
             <form className="d-flex" role="search">
               <input

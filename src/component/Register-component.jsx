@@ -5,19 +5,20 @@ import AuthService from "../services/auth.service";
 const RegisterComponent = () => {
   const navigate = useNavigate();
   let [username, setUsername] = useState("");
-  let [password, setPassword] = useState("");
   let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
   let [role, setRole] = useState("");
   let [message, setMessage] = useState("");
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
   };
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
   const handleChangeRole = (e) => {
     setRole(e.target.value);
   };
