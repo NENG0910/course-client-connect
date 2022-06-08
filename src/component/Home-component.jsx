@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomeComponent = () => {
+  const navigate = useNavigate();
+  const handleTakeToLogin = () => {
+    navigate("/login");
+  };
   return (
     <main>
       <div className="container py-4">
@@ -13,9 +18,15 @@ const HomeComponent = () => {
               project, which is one of the most popular way to create modern
               websites.
             </p>
-            <button className="btn btn-primary btn-lg" type="button">
-              See how it works.
-            </button>
+
+            <a
+              className="btn btn-primary"
+              target="_blank"
+              href="https://github.com/NENG0910/course-client"
+              rel="noreferrer"
+            >
+              Github
+            </a>
           </div>
         </div>
 
@@ -28,7 +39,10 @@ const HomeComponent = () => {
                 practice purpose only, so please do not provide any personal
                 information, such as credit card numbers.
               </p>
-              <button className="btn btn-outline-light" type="button">
+              <button
+                onClick={handleTakeToLogin}
+                className="btn btn-outline-light"
+              >
                 Login or Register Now
               </button>
             </div>
@@ -42,14 +56,19 @@ const HomeComponent = () => {
                 only, so please do not provide any personal information, such as
                 credit card numbers.
               </p>
-              <button className="btn btn-outline-secondary" type="button">
+              <button
+                onClick={handleTakeToLogin}
+                className="btn btn-outline-secondary"
+              >
                 Login or Register Now
               </button>
             </div>
           </div>
         </div>
 
-        <footer className="pt-3 mt-4 text-muted border-top">Github Link</footer>
+        <footer className="pt-3 mt-4 text-muted border-top">
+          <p>Email:k7351264@gmail.com</p>
+        </footer>
       </div>
     </main>
   );

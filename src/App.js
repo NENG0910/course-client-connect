@@ -6,6 +6,7 @@ import NavComponent from "./component/Nav-component";
 import RegisterComponent from "./component/Register-component";
 import ProfileComponent from "./component/Profile-component";
 import AuthService from "./services/auth.service";
+import CourseComponent from "./component/Course-component";
 
 function App() {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -15,13 +16,9 @@ function App() {
       <NavComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<HomeComponent />} exact />
+        <Route path="/register" element={<RegisterComponent />} exact />
         <Route
-          path="/api/user/register"
-          element={<RegisterComponent />}
-          exact
-        />
-        <Route
-          path="/api/user/login"
+          path="/login"
           element={
             <LoginComponent
               currentUser={currentUser}
@@ -31,9 +28,19 @@ function App() {
           exact
         />
         <Route
-          path="/api/user/profile"
+          path="/profile"
           element={
             <ProfileComponent
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+          exact
+        />
+        <Route
+          path="/course"
+          element={
+            <CourseComponent
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
             />

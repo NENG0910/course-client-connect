@@ -37,33 +37,40 @@ const NavComponent = (props) => {
                 </a>
               </li>
               {!currentUser && (
-                <div className="d-flex flex-row">
-                  <li className="nav-item">
-                    <a className="nav-link" href="/api/user/register">
-                      Register
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/api/user/login">
-                      Login
-                    </a>
-                  </li>
-                </div>
+                <li className="nav-item">
+                  <a className="nav-link" href="/register">
+                    Register
+                  </a>
+                </li>
+              )}
+              {!currentUser && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/login">
+                    Login
+                  </a>
+                </li>
               )}
 
               {currentUser && (
-                <div className="d-flex flex-row">
-                  <li className="nav-item">
-                    <a onClick={handleLogout} className="nav-link" href="/#">
-                      Logout
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/api/user/profile">
-                      Profile
-                    </a>
-                  </li>
-                </div>
+                <li className="nav-item">
+                  <a onClick={handleLogout} className="nav-link" href="/#">
+                    Logout
+                  </a>
+                </li>
+              )}
+              {currentUser && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/profile">
+                    Profile
+                  </a>
+                </li>
+              )}
+              {currentUser && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/course">
+                    Course
+                  </a>
+                </li>
               )}
             </ul>
             <form className="d-flex" role="search">
