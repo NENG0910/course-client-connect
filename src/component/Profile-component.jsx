@@ -1,11 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProfileComponent = (props) => {
   let { currentUser } = props;
-
+  const navigate = useNavigate();
+  const handleTakeToLogin = () => {
+    navigate("/login");
+  };
   return (
     <div>
-      {!currentUser && <div>You must login to visit profile page.</div>}
+      {!currentUser && (
+        <div>
+          <p>You must login to visit profile page.</p>
+          <button onClick={handleTakeToLogin} className="btn btn-primary">
+            Login
+          </button>
+        </div>
+      )}
       {currentUser && (
         <div>
           <h1>In profile</h1>
