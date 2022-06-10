@@ -23,6 +23,34 @@ class CourseService {
     );
   }
 
+  getEnrollCourse(_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL + "/student/" + _id, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
+  getCourseByName(name) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL + "/findByName/" + name, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
   get(_id) {
     let token;
     if (localStorage.getItem("user")) {

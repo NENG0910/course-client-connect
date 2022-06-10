@@ -10,20 +10,33 @@ const CourseComponent = (props) => {
   };
   let [courseData, setCourseData] = useState(null);
   useEffect(() => {
+    //設定網址的id /instructor/instructor的id
     let _id;
     if (currentUser) {
       _id = currentUser.user._id;
     } else {
       _id = "";
     }
-    CourseService.get(_id)
-      .then((data) => {
-        setCourseData(data.data);
-        console.log(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //如果是instructor 就setCourseData，map顯示出instructor的課程
+    if (currentUser.user.role === "instructor") {
+      CourseService.get(_id)
+        .then((data) => {
+          setCourseData(data.data);
+          console.log(data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (currentUser.user.role === "student") {
+      CourseService.getEnrollCourse(_id)
+        .then((data) => {
+          setCourseData(data.data);
+          console.log(data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
   return (
     <div style={{ padding: "3rem" }}>
@@ -45,7 +58,7 @@ const CourseComponent = (props) => {
           <p>This is {currentUser.user.role} 's page.</p>
         </div>
       )}
-      {currentUser && courseData && courseData.length != 0 && (
+      {currentUser && courseData && courseData.length !== 0 && (
         <div>
           <p>Here's the data from sever</p>
           {courseData.map((course) => (

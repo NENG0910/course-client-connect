@@ -73,7 +73,7 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="role">Role</label>
+          <label htmlFor="role">Role(student or instructor)</label>
           <input
             onChange={handleChangeRole}
             type="text"

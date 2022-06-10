@@ -72,10 +72,17 @@ const NavComponent = (props) => {
                   </a>
                 </li>
               )}
-              {currentUser && currentUser.user.role == "instructor" && (
+              {currentUser && currentUser.user.role === "instructor" && (
                 <li className="nav-item">
                   <a className="nav-link" href="/postCourse">
                     Post Course
+                  </a>
+                </li>
+              )}
+              {currentUser && currentUser.user.role === "student" && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/enroll">
+                    Enroll
                   </a>
                 </li>
               )}
