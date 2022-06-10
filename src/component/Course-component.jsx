@@ -70,9 +70,8 @@ const CourseComponent = (props) => {
                   <p className="card-text">
                     Student count: {course.students.length}
                   </p>
-                  <button className="btn btn-primary">
-                    Price: NT{course.price}
-                  </button>
+                  <p className="card-text">Price: NT{course.price}</p>
+                  <a className="btn btn-primary">Price: NT{course.price}</a>
                 </div>
               </div>
               <br />

@@ -14,7 +14,6 @@ const EnrollCourseComponent = (props) => {
     setSearchInput(e.target.value);
   };
   const handleSearch = () => {
-    console.log("1");
     CourseService.getCourseByName(searchInput)
       .then((data) => {
         setSearchResult(data.data);
@@ -24,13 +23,13 @@ const EnrollCourseComponent = (props) => {
         console.log(err);
       });
   };
+  const handleEnroll = (e) => {
+    console.log(e.target.parentElement);
+  };
 
-  // useEffect(()=>{
-  //   CourseService.getCourseByName("")
-  // },[])
   return (
     <div style={{ padding: "3rem" }}>
-      <form className="d-flex" role="search">
+      <div className="d-flex" role="search">
         <input
           onChange={handleSearchInput}
           className="form-control me-2"
@@ -45,7 +44,7 @@ const EnrollCourseComponent = (props) => {
         >
           Search
         </button>
-      </form>
+      </div>
       <div style={{ padding: "3rem" }}>
         {!currentUser && (
           <div style={{ padding: "3rem" }}>
@@ -59,7 +58,7 @@ const EnrollCourseComponent = (props) => {
           <div>
             <p>Here's the data from sever</p>
             {searchResult.map((course) => (
-              <div>
+              <div key={course._id}>
                 <div className="card" style={{ width: "18rem" }}>
                   <div className="card-body">
                     <h5 className="card-title">{course.title}</h5>
@@ -67,9 +66,10 @@ const EnrollCourseComponent = (props) => {
                     <p className="card-text">
                       Student count: {course.students.length}
                     </p>
-                    <button className="btn btn-primary">
-                      Price: NT{course.price}
-                    </button>
+                    <p className="card-text">Price: NT{course.price}</p>
+                    <a onClick={handleEnroll} className="btn btn-primary">
+                      Enroll
+                    </a>
                   </div>
                 </div>
                 <br />
