@@ -24,7 +24,15 @@ const EnrollCourseComponent = (props) => {
       });
   };
   const handleEnroll = (e) => {
-    console.log(e.target.parentElement);
+    console.log(e.target.id);
+    CourseService.enroll(e.target.id, currentUser.user._id)
+      .then(() => {
+        window.alert("Done Enroll.");
+        navigate("/course");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -67,7 +75,12 @@ const EnrollCourseComponent = (props) => {
                       Student count: {course.students.length}
                     </p>
                     <p className="card-text">Price: NT{course.price}</p>
-                    <a onClick={handleEnroll} className="btn btn-primary">
+                    {/* id=course.id 點選a的時候，讓e.target.id指向course.id */}
+                    <a
+                      onClick={handleEnroll}
+                      className="btn btn-primary"
+                      id={course._id}
+                    >
                       Enroll
                     </a>
                   </div>

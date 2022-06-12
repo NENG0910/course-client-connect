@@ -13,6 +13,7 @@ class CourseService {
 
     return axios.post(
       API_URL,
+      //第二個參數為req.body
       { title, description, price },
       {
         //同postman作法
@@ -63,6 +64,25 @@ class CourseService {
         Authorization: token,
       },
     });
+  }
+  enroll(_id, user_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.post(
+      API_URL + "/enroll/" + _id,
+      {
+        user_id,
+      },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
   }
 }
 

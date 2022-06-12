@@ -63,7 +63,7 @@ const CourseComponent = (props) => {
           <p>Here's the data from sever</p>
           {courseData.map((course) => (
             <div>
-              <div className="card" style={{ width: "18rem" }}>
+              <div key={course._id} className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <h5 className="card-title">{course.title}</h5>
                   <p className="card-text">{course.description}</p>
