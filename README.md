@@ -22,6 +22,19 @@
 3.Bootstrap  
 4.axios
 
+## 發生問題
+
+1.在執行 search button 時，console.log()顯示短時間出現即消失，搜尋功能的結果也無法顯示。  
+原因:
+
+<form>刪除即可  
+  
+## 未來可能加入功能  
+1.instructor可以編輯刪除課程  
+2.加入購物車功能  
+3.課程留言板或評論區  
+4.不限student才能搜尋，訪客也可以
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
