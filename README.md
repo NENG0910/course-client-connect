@@ -21,7 +21,7 @@
 
 1.React  
 2.react-route-dom  
-3.Bootstrap
+3.Bootstrap  
 4.axios  
 5.Vercel 及 heroku 架設網站
 
