@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://vast-falls-97220.herokuapp.com//api/user";
+const API_URL = "https://vast-falls-97220.herokuapp.com/api/user";
 class AuthService {
   login(email, password) {
     return axios.post(API_URL + "/login", {
