@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/courses";
+const API_URL = "https://vast-falls-97220.herokuapp.com//api/courses";
 class CourseService {
   //讓axios攜帶jwt去server
   postCourse(title, description, price) {
