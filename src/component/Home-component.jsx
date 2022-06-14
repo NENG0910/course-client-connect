@@ -13,12 +13,14 @@ const HomeComponent = () => {
           <div className="container-fluid py-5">
             <h1 className="display-5 fw-bold">Learning System</h1>
             <p className="col-md-8 fs-4">
-              This system is using React.js as front-end framework, and Node.js,
-              MongoDB as backend server. This kind of project is called MERN
-              project, which is one of the most popular way to create modern
-              websites.
+              此網站前端使用React，後端Node.js、資料庫MongoDB。前端架設在Vercel，後端heroku。
             </p>
-
+            <p>
+              輸入 username、email 及 password 可建立新的帳號，role 輸入 student
+              或 instructor 決定身分，密碼會經過 bcypt 進行加密儲存至 MongoDB
+              Altas 資料庫中。 輸入 email 及 password 進行登入，登入成功後有 JWT
+              儲存在使用者的 Localstorage，API 動作時，會連帶確認 JWT 是否正確。
+            </p>
             <a
               className="btn btn-primary"
               target="_blank"
