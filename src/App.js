@@ -17,7 +17,12 @@ function App() {
   console.log(currentUser);
   return (
     <div className="App">
-      <NavComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <NavComponent
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        searchResult={searchResult}
+        setSearchResult={setSearchResult}
+      />
       <Routes>
         <Route path="/" element={<HomeComponent />} exact />
         <Route path="/register" element={<RegisterComponent />} exact />
@@ -41,18 +46,7 @@ function App() {
           }
           exact
         />
-        <Route
-          path="/course"
-          element={
-            <CourseComponent
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-              courseData={courseData}
-              setCourseData={setCourseData}
-            />
-          }
-          exact
-        />
+
         <Route
           path="/postCourse"
           element={
@@ -69,10 +63,13 @@ function App() {
             <EnrollCourseComponent
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
+              searchResult={searchResult}
+              setSearchResult={setSearchResult}
             />
           }
           exact
         />
+        <Route path="/*" element="該頁面不存在，404 not dound" />
       </Routes>
     </div>
   );
